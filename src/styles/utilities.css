@@ -1,0 +1,24 @@
+/* token -> utilities (the use of tokens on to components) */
+@layer utilities{
+
+    .font-proxima {
+    font-family: var(--font-proxima), -apple-system, "Helvetica Neue", sans-serif;
+    }
+
+    .font-montserrat {
+    font-family: var(--font-montserrat), -apple-system, "Helvetica Neue", sans-serif;
+    }
+
+    .font-lora {
+    font-family: var(--font-lora), Georgia, serif;
+    }
+
+    .font-helvetica {
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .container-padded{
+        @apply mx-auto max-w-5xl px-4;
+    }
+}
+

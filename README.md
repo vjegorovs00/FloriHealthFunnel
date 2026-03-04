@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flori health funnel
+Multi-step funnel application that collects user body metrics, calculates potential weight loss, and stores submission data in Supabase.
 
-## Getting Started
+**Depoloyed webapp available via the link:**
+~~[Link to Vercel](www.google.com)~~
 
-First, run the development server:
+## About the project
+**Tech stack:** Next.js, Typescript, Tailwind CSS, Supabase(PostgreSQL), Vercel.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Features:** 
+- 7-step funnel flow, 
+- Form validation,
+- Support for metrics (cm/kg) and Imperial (ft/lb) systems,
+- Persistent state between steps,
+- Supabase data storage,
+- Clean component structure,
+- Responsive & pixel accurate UI implementation
+
+**Funnel flow:**
+1. Home (CTA)
+2. Enter height
+3. Enter weight
+4. Enter dream weight
+5. Info screen (weight difference)
+6. Enter email
+7. Checkout
+
+## Setup and installation
+Steps to set up the project **locally**:
+
+1. clone the repository
+```Bash
+git clone <repo-url>
+cd flori-health-funnel
 ```
-
+2. Install dependencies
+```Bash
+npm install
+```
+3. Create `.env.local`
+```Bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+4. Run development server
+```Bash
+npm run dev
+```
+5. Apps run at:
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Unit handling
+Internally, all values are converted to metric units before storing in the database
+### Metric:
+- Height in cm
+- Weight in kg
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Imperial:
+- Height in ft/in
+- Weight in lb
 
-## Learn More
+## Database schema (Supabase)
+Table: funnel_submission
+Column | Type
+ ------------ | ------------- 
+id | uuid 
+created_at | timestamp
+height_cm | integer 
+weight_kg | integer 
+target_weight_kg | integer 
+calculated_loss_kg | integer 
+email | text 
 
-To learn more about Next.js, take a look at the following resources:
+Note: All values are stored in metric format for normalization
+## License
+MIT License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contacts
+Email: v.jegorovs00@gmail.com

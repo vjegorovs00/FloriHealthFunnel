@@ -1,0 +1,19 @@
+/* Ready patterns -> buttons, cards, layout-components */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+      px-4 py-2 text-sm font-medium
+      rounded-full transition-colors
+      focus-visible:outline-none focus-visible:ring-2
+      focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-900 hover:bg-gray-100;
+  }
+}
