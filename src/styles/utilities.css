@@ -17,8 +17,21 @@
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
     }
 
-    .container-padded{
-        @apply mx-auto max-w-5xl px-4;
+    /* colors classes */
+    .bg-page {
+        background: var(--color-shell-paper);
+    }
+    .bg-canvas-default {
+        background: var(--canvas-bg-default);
+    }
+    .bg-canvas-warm {
+        background: var(--canvas-bg-warm);
+    }
+    .bg-progress-bar {
+        background: var(--color-progress-bar);
+    }
+    .bg-progress-bar-default {
+        background: var(--color-progress-bar-inActive);
     }
 }
 

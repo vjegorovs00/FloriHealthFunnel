@@ -1,7 +1,11 @@
 'use client'
 
+// Basic template of each navbar
+
 import { ReactNode } from "react";
 import clsx from 'clsx';
+
+// clsx in case of better refactoring
 
 type BaseNavbarProps = {
     left?: ReactNode;
@@ -17,7 +21,7 @@ export default function BaseNavbar({
     className,
 }: BaseNavbarProps) {
     return(
-        <header className={clsx('bg-shell-paper px-8 py-3', className)}>
+        <header className={clsx('', className)}>
             <div className="grid grid-cols-3 items-center">
                 <div className="flex items-center justify-start">{left}</div>
                 <div className="flex items-center justify-center">{center}</div>

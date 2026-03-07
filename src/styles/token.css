@@ -1,10 +1,33 @@
 /* font, color, radius */
 :root {
-    /* color */
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-primary: #0f766e;
-  --color-primary-foreground: #ecfeff;
+
+    /* canvas */
+  --canvas-bg-default: linear-gradient(
+    180deg,
+    rgba(252, 239, 222, 1) 0%,
+    rgba(219, 184, 144, 0.5) 100%
+  );
+
+  --canvas-bg-warm: linear-gradient(
+    180deg,
+    rgba(252, 239, 222, 1) 0%,
+    rgba(219, 184, 144, 1) 100%
+  );
+
+    /* colors */
+  --background: #FAF9F5;
+  --foreground: #3F1E1E;
+
+  --color-primary: #000000;
+  --color-primary-foreground: #504F4F;
+  --color-shell-paper: #FAF9F5;
+  --bg-page: #fcefde;
+
+  --color-progress-bar: #3F1E1E;
+  --color-progress-bar-inActive: rgba(63, 30, 30, 0.5);;
+  
+  --color-button: #3F1E1E;
+  --color-button-inActive: rgba(63, 30, 30, 0.5);
 
   /* radius */
   --radius-sm: 0.375rem;
@@ -18,15 +41,8 @@
   --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;  
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background: var(--canvas-bg-default);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
