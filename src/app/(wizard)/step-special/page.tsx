@@ -12,10 +12,10 @@ export default function StepSpecial(){
         <section className="flex flex-col items-center justify-center text-center gap-12.5 min-h-[calc(100vh-160px)]">
             <div className="flex flex-col font-lora gap-6 text-foreground">
                 <p className="leading-snug text-[40px]">
-                    ✨<br/><span className="font-semibold">10 kg</span> to your goal—let's<br/> make it happen.
+                    ✨<br/><span className="font-semibold">10 kg</span> to your goal—let&apos;s<br/> make it happen.
                 </p>
                 <p className="text-[24px]">
-                    Setting a clear target means you're <br/> ready. Let's keep building your plan.
+                    Setting a clear target means you&apos;re <br/> ready. Let&apos;s keep building your plan.
                 </p>
             </div>
             <button
