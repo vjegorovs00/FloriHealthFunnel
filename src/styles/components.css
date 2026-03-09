@@ -20,4 +20,7 @@
   .wizard-shell {
     @apply mx-auto max-w-[456px] py-[37px];
   }
+  .first-last-shell{
+    @apply mx-auto max-w-[1010px];
+  }
 }

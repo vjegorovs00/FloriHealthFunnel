@@ -22,7 +22,7 @@ export default function BaseNavbar({
 }: BaseNavbarProps) {
     return(
         <header className={clsx('', className)}>
-            <div className="grid grid-cols-3 items-center">
+            <div className="grid grid-cols-3 items-center max-w-6xl justify-center mx-auto">
                 <div className="flex items-center justify-start">{left}</div>
                 <div className="flex items-center justify-center">{center}</div>
                 <div className="flex items-center justify-end">{right}</div>

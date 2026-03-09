@@ -42,7 +42,7 @@ export function MetricNumberStep({
 
     return(
         <form
-            className="space-y-6" 
+            className="space-y-6 mb-[300px]" 
             onSubmit={handleSubmit}>
 
             <header className="text-center space-y-5">

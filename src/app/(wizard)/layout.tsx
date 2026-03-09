@@ -39,7 +39,7 @@ export default function WizardLayout( {children}: {children: ReactNode }) {
 
             {(!isSpecial && !isStepOne && !isLast) && <ProgressBar value={progress}/>}
 
-            <main className={`wizard-shell`}>
+            <main className={`${!isStepOne && !isLast ? 'wizard-shell' : 'first-last-shell'}`}>
                 {children}
             </main>
         </div>

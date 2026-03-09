@@ -40,13 +40,21 @@
         color: var(--color-primary-foreground);
     }
     .foreground-inActive{
-        color: var(--color-primary-foreground-inactive)
+        color: var(--color-primary-foreground-inactive);
     }
     .button-active{
         background: var(--color-button);
+        transition: background-color 0.2s ease;
+    }
+    .button-active:hover {
+    background: var(--color-button-hover);
     }
     .button-inActive{
         background: var(--color-button-inActive);
+    }
+    .text-40 {
+        font-size: 40px;
+        line-height: 1.2;
     }
 }
 

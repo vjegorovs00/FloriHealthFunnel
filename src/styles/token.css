@@ -30,6 +30,7 @@
   
   --color-button: #3F1E1E;
   --color-button-inActive: rgba(63, 30, 30, 0.5);
+  --color-button-hover: rgba(63, 30, 30, 0.9);
   --color-under-toggle: #ECE9E9;
 
   /* radius */
