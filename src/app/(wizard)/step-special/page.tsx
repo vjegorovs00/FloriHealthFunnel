@@ -1,4 +1,4 @@
-export default function stepSpecial(){
+export default function StepSpecial(){
     return(
         <div>hello! StepSpecial</div>
     );
