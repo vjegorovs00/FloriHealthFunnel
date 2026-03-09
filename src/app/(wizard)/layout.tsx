@@ -29,7 +29,7 @@ export default function WizardLayout( {children}: {children: ReactNode }) {
     if (isStepOne) navbar = <StepOneNavbar />;
     if (isSpecial) navbar = <SpecialNavbar />;
 
-    const bgClass = isSpecial ? 'bg-canvas-warm' : 'bg-canvas-default';
+    const bgClass = isSpecial ? 'bg-canvas-warm' : (isStepOne ? 'bg-canvas-default' : 'bg-page');
 
     return (
         <div className={`min-h-screen ${bgClass}`}>
@@ -39,7 +39,9 @@ export default function WizardLayout( {children}: {children: ReactNode }) {
 
             {(!isSpecial && !isStepOne && !isLast) && <ProgressBar value={progress}/>}
 
-            <main className="wizard-shell">{children}</main>
+            <main className={`wizard-shell`}>
+                {children}
+            </main>
         </div>
     );
 }

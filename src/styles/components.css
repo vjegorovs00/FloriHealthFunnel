@@ -16,4 +16,8 @@
   .btn-ghost {
     @apply bg-transparent text-gray-900 hover:bg-gray-100;
   }
+
+  .wizard-shell {
+    @apply mx-auto max-w-[456px] py-[37px];
+  }
 }

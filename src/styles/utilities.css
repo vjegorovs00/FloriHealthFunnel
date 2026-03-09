@@ -33,5 +33,20 @@
     .bg-progress-bar-default {
         background: var(--color-progress-bar-inActive);
     }
+    .bg-under-toggle{
+        background: var(--color-under-toggle);
+    }
+    .foreground{
+        color: var(--color-primary-foreground);
+    }
+    .foreground-inActive{
+        color: var(--color-primary-foreground-inactive)
+    }
+    .button-active{
+        background: var(--color-button);
+    }
+    .button-inActive{
+        background: var(--color-button-inActive);
+    }
 }
 
