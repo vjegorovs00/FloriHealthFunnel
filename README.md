@@ -23,7 +23,7 @@ Multi-step funnel application that collects user body metrics, calculates potent
 4. Enter dream weight
 5. Info screen (weight difference)
 6. Enter email
-7. Checkout
+7. Checkout (Submitting data to Supabase DB)
 
 ## Setup and installation
 Steps to set up the project **locally**:
@@ -37,7 +37,7 @@ cd flori-health-funnel
 ```Bash
 npm install
 ```
-3. Create `.env.local`
+3. Create `.env.local` (use your own Supabase API keys)
 ```Bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
@@ -64,12 +64,14 @@ Table: funnel_submission
 Column | Type
  ------------ | ------------- 
 id | uuid 
+session_id | text
 created_at | timestamp
-height_cm | integer 
-weight_kg | integer 
+weight_kg | integer
 target_weight_kg | integer 
-calculated_loss_kg | integer 
+height_cm | integer 
 email | text 
+agreed_policy | boolean
+plan_id | text
 
 Note: All values are stored in metric format for normalization
 ## License
