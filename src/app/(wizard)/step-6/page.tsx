@@ -9,6 +9,8 @@ import { FinalCta } from "@/components/summary/FinalCta";
 
 import { useWizard } from '../WizardProvider';
 
+import { supabase } from '@/lib/supabaseClient';
+
 // helper function:converter
 function toKg(value: number, system: 'metric' | 'imperial') {
     return system === 'metric' ? value : value * 0.45;
@@ -23,23 +25,37 @@ export default function Step6Page(){
     const { state } = useWizard();
     const [selectedPlan, setSelectedPlan] = useState<PlanId>('6m');
 
-    const currentWeightKg = state.weight ? toKg(state.weight.value, state.weight.system) : undefined;
-    const targetWeightKg = state.targetWeight ? toKg(state.targetWeight.value, state.targetWeight.system) : undefined;
-    const currentHeightCm = state.height ? toCm(state.height.value, state.height.system) : undefined;
+    const weight_kg = state.weight ? toKg(state.weight.value, state.weight.system) : undefined;
+    const target_weight_kg = state.targetWeight ? toKg(state.targetWeight.value, state.targetWeight.system) : undefined;
+    const height_cm = state.height ? toCm(state.height.value, state.height.system) : undefined;
 
 
-    const handleFinalSubmit = () => {
+    const handleFinalSubmit = async () => {
+        const timestamp = new Date().toISOString();
+
         const payload = {
-            currentWeightKg,
-            targetWeightKg,
-            currentHeightCm,
+            session_id: state.sessionId,
+            created_at: timestamp,
+            weight_kg: weight_kg ?? null,
+            target_weight_kg: target_weight_kg ?? null,
+            height_cm: height_cm ?? null,
             email: state.email ?? null,
-            agreed: state.agreedDataPolicy ?? false,
-            planId: selectedPlan,
+            agreed_policy: state.agreedDataPolicy ?? false,
+            plan_id: selectedPlan,
         };
         console.log('final submit', payload);
+
+        const {error} = await supabase
+            .from('wizard_submissions_final')
+            .insert(payload);
+
+            if (error){
+                console.error('Supabase error', error);
+            }else {
+                console.log('Success', payload)
+            }
     };
-    
+
     return(
         <section className="flex min-h-full flex-col items-center gap-10 py-12">
 

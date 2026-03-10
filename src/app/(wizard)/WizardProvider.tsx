@@ -15,6 +15,7 @@ type WizardState = {
     targetWeight?: MetricField;
     email?: string;
     agreedDataPolicy?: boolean;
+    sessionId: string;
 };
 
 type WizardContextValue = {
@@ -37,7 +38,12 @@ export function useWizard(){
 }
 
 export function WizardProvider({children}: {children: React.ReactNode}){
-    const [state, setState] = useState<WizardState>({});
+    const [state, setState] = useState<WizardState>(() =>({
+        sessionId:
+            typeof crypto !== 'undefined' && 'randomUUID 'in crypto
+            ? crypto.randomUUID()
+            : `sess_${Math.random().toString(36).slice(2)}`,
+    }));
 
     const setHeight = (data: MetricField) => {
         setState((prev) => ({...prev, height: data}));
@@ -54,10 +60,10 @@ export function WizardProvider({children}: {children: React.ReactNode}){
     const setEmail = (email: string) => {
     setState(prev => ({ ...prev, email }));
     };
-    
+
     const setAgreedDataPolicy = (agreed: boolean) => {
     setState(prev => ({ ...prev, agreedDataPolicy: agreed }));
-    };    
+    };
 
     return(
         <WizardContext.Provider value={{state, setHeight, setWeight, setTargetWeight, setEmail, setAgreedDataPolicy}}>
