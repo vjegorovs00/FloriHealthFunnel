@@ -16,7 +16,8 @@ const montserrat = Montserrat({
 const proximaNova = localFont({
   src: [
     { path: '../fonts/ProximaNova/ReneBook.otf', weight: '400', style: 'normal'},
-    { path: '../fonts/ProximaNova/ReneSemiBold.otf', weight: '600', style: 'normal'},
+    { path: '../fonts/ProximaNova/ReneSemiBold.otf', weight: '700', style: 'normal'},
+    { path: '../fonts/ProximaNova/ReneBookBlack.otf', weight: '900', style: 'normal'},
   ],
   variable: '--font-proxima'
 });
