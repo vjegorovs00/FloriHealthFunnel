@@ -7,6 +7,8 @@ import SpecialNavbar from '@/components/layout/SpecialNavbar';
 import ProgressBar from '@/components/layout/ProgressBar';
 import StepOneNavbar from '@/components/layout/StepOneNavbar';
 
+import { WizardProvider } from "./WizardProvider";
+
 const progressSteps = [
     'step-2',
     'step-3',
@@ -29,17 +31,19 @@ export default function WizardLayout( {children}: {children: ReactNode }) {
     if (isStepOne) navbar = <StepOneNavbar />;
     if (isSpecial) navbar = <SpecialNavbar />;
 
-    const bgClass = isSpecial ? 'bg-canvas-warm' : 'bg-canvas-default';
+    const bgClass = isSpecial ? 'bg-canvas-warm' : (isStepOne ? 'bg-canvas-default' : 'bg-page');
 
     return (
-        <div className={`min-h-screen ${bgClass}`}>
-            <div className="border-b">
-                {navbar}
+        <WizardProvider>
+            <div className={`min-h-screen ${bgClass}`}>
+                <div className="border-b">
+                    {navbar}
+                </div>
+                {(!isSpecial && !isStepOne && !isLast) && <ProgressBar value={progress}/>}
+                <main className={`${!isStepOne && !isLast ? 'wizard-shell' : 'first-last-shell'}`}>
+                    {children}
+                </main>
             </div>
-
-            {(!isSpecial && !isStepOne && !isLast) && <ProgressBar value={progress}/>}
-
-            <main className="wizard-shell">{children}</main>
-        </div>
+        </WizardProvider>
     );
 }

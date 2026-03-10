@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../app/**/*.{ts,tsx,js,jsx}" "../components/**/*.{ts,tsx,js,jsx}";
 
 @import "../styles/token.css";
 @import "../styles/utilities.css";
