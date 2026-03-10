@@ -51,8 +51,11 @@ export default function Step6Page(){
 
             if (error){
                 console.error('Supabase error', error);
+                alert('Something odd happened, please try again later');
+                return;
             }else {
-                console.log('Success', payload)
+                console.log('Success', payload);
+                alert('Congratulation! Your plan has been saved!')
             }
     };
 
@@ -62,7 +65,7 @@ export default function Step6Page(){
             {/* Upper layer */}
             <div className="w-full max-w-[456px] space-y-6">
                 <BodyFatCard/>
-                <WeightCard current={86} target={82}/>
+                <WeightCard current={state.weight?.value ?? 86} target={state.targetWeight?.value ?? 82}/>
             </div>
 
             {/* Plans */}
