@@ -3,23 +3,30 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { useWizard } from '../WizardProvider';
+
 export default function Step5Page() {
     const router = useRouter();
-    const [email, setEmail] = useState('');
-    const [agreed, setAgreed] = useState(false);
+    const { state, setEmail, setAgreedDataPolicy } = useWizard();
+
+    const [email, setEmailLocal] = useState(state.email ?? '');
+    const [agreed, setAgreed] = useState(state.agreedDataPolicy ?? false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     const isEmailValid = /\S+@\S+\.\S+/.test(email);
     const canContinue = isEmailValid && agreed && !isSubmitting;
 
     const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!canContinue) return;
+        e.preventDefault();
+        if (!canContinue) return;
 
-    setIsSubmitting(true);
-    // ...логика
-    router.push('/step-6');
-    setIsSubmitting(false);
+        setIsSubmitting(true);
+        setEmail(email);
+        setAgreedDataPolicy(agreed);
+        router.push('/step-6');
+        setIsSubmitting(false);
+        console.log('email', {email, agreed});
     };
 
 
@@ -49,7 +56,7 @@ export default function Step5Page() {
                 type="email"
                 className="w-full rounded-xl border border-[#3F1E1E] bg-white px-4 h-[75px] text-[22px] outline-none"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmailLocal(e.target.value)}
             />
             </div>
 

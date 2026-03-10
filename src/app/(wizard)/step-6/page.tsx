@@ -7,14 +7,39 @@ import { FeautreCard } from "@/components/summary/FeatureList";
 import { PlanList, type PlanId } from "@/components/summary/PlanList";
 import { FinalCta } from "@/components/summary/FinalCta";
 
+import { useWizard } from '../WizardProvider';
+
+// helper function:converter
+function toKg(value: number, system: 'metric' | 'imperial') {
+    return system === 'metric' ? value : value * 0.45;
+}
+
+function toCm(value: number, system: 'metric' | 'imperial') {
+    return system === 'metric' ? value : value * 2.54;
+}
+
 
 export default function Step6Page(){
+    const { state } = useWizard();
     const [selectedPlan, setSelectedPlan] = useState<PlanId>('6m');
 
+    const currentWeightKg = state.weight ? toKg(state.weight.value, state.weight.system) : undefined;
+    const targetWeightKg = state.targetWeight ? toKg(state.targetWeight.value, state.targetWeight.system) : undefined;
+    const currentHeightCm = state.height ? toCm(state.height.value, state.height.system) : undefined;
+
+
     const handleFinalSubmit = () => {
-        // TODO implement supabase later
-        console.log('final submit with plan', selectedPlan);
+        const payload = {
+            currentWeightKg,
+            targetWeightKg,
+            currentHeightCm,
+            email: state.email ?? null,
+            agreed: state.agreedDataPolicy ?? false,
+            planId: selectedPlan,
+        };
+        console.log('final submit', payload);
     };
+    
     return(
         <section className="flex min-h-full flex-col items-center gap-10 py-12">
 

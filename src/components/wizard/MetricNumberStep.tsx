@@ -11,9 +11,12 @@ type MetricNumberStepProps = {
     metricUnit: string;
     imperialUnit: string;
     onSubmit: (data: {
-        system: System;
-        value: number;
-    }) => Promise<void> | void;
+            system: System;
+            value: number;
+        }) => Promise<void> | void;
+
+    initialValue?: number;
+    initialSystem?: System;
 };
 
 export function MetricNumberStep({
@@ -22,9 +25,15 @@ export function MetricNumberStep({
     metricUnit,
     imperialUnit,
     onSubmit,
+    initialValue,
+    initialSystem,
 }: MetricNumberStepProps){
-    const [system, setSystem] = useState<System>('metric');
-    const [value, setValue] = useState('');
+    const [system, setSystem] = useState<System>(initialSystem ?? 'metric');
+
+    const [value, setValue] = useState(
+        initialValue !== undefined ? String(initialValue) : ''
+    );
+
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const numeric = Number(value.replace(',', '.'));
@@ -42,6 +51,7 @@ export function MetricNumberStep({
 
     return(
         <form
+            id={title}
             className="space-y-6 mb-[300px]" 
             onSubmit={handleSubmit}>
 

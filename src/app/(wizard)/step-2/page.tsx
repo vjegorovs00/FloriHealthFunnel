@@ -1,9 +1,11 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { MetricNumberStep } from "@/components/wizard/MetricNumberStep";
+import { useWizard } from '../WizardProvider';
 
 export default function Step2Page(){
     const router = useRouter();
+    const {state, setHeight} = useWizard();
 
     return(
         <div>
@@ -13,9 +15,12 @@ export default function Step2Page(){
                 metricUnit="cm"
                 imperialUnit="in"
                 onSubmit={async ({system, value}) => {
-                    console.log('height step', {system, value})
-                    router.push('/step-3')
+                    console.log('height step', {system, value});
+                    setHeight({system, value});
+                    router.push('/step-3');
                 }}
+                initialValue={state.height?.value}
+                initialSystem={state.height?.system}
             />
         </div>
     );
